@@ -1,0 +1,87 @@
+<!-- registraion section
+
+<bs-modal #register class="form_main">
+    <bs-modal-header [showDismiss]="true">
+        <h4 class="modal-title" class="heading" align='center'>Add Category</h4>
+
+    </bs-modal-header>
+    <bs-modal-body class="form">
+        <div>
+            <input type='text' [(ngModel)]='model.Name' placeholder="Full Name" class="txt">
+        </div>
+        <div>
+            <input type='text' [(ngModel)]='model.Mobile' placeholder="Mobile Number" class="txt">
+        </div>
+
+        <div>
+            <input type='text' [(ngModel)]='model.Address' placeholder="Address" class="txt">
+        </div>
+
+    </bs-modal-body>
+    <bs-modal-footer>
+        <button type="button" class="btn btn-default" (click)='dismiss()'>Close</button>
+        <button type="button" class="btn btn-primary" (click)='addCategory()'>Add</button>
+    </bs-modal-footer>
+</bs-modal> -->
+
+<bs-modal #register class="form_main">
+    <form class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend align='center'>Register</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label"  >Name</label>
+                <div class="col-md-4">
+                    <input id="fn" name="fn" type="text" [(ngModel)]='model.name' placeholder="Name" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label"  for="add1">Address</label>
+                <div class="col-md-4">
+                    <input id="add1" name="add1" type="text" [(ngModel)]='model.address' placeholder="Optional" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+
+
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label"  for="phone">Mobile</label>
+                <div class="col-md-4">
+                    <input id="phone" name="phone" [(ngModel)]='model.mobile' type="text" placeholder="Phone Number" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- password-->
+            <div class="form-group">
+                <label class="col-md-4 control-label"  for="phone">Password</label>
+                <div class="col-md-4">
+                    <input id="password" name="password" [(ngModel)]='model.password' type="text" placeholder="Password" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="submit"></label>
+                <div class="col-md-4">
+                    <button id="submit" name="submit" class="btn btn-primary" (click)='user_register()'>REGISTER</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</bs-modal>

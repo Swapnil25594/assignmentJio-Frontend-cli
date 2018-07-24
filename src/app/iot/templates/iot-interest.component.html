@@ -1,0 +1,128 @@
+<!-- login section -->
+
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!--    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div> -->
+
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <!-- <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul> -->
+            <div *ngIf="!IsAuthenticate">
+                <form id="signin" class="navbar-form navbar-right" role="form">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input id="email" type="email" class="form-control" [(ngModel)]='model.mobile' name="email" value="" placeholder="Mobile">
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                        </span>
+                        <input id="password" type="password" class="form-control" [(ngModel)]='model.password' name="password" value="" placeholder="Password">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
+                    <button type="submit" class="btn btn-warning" (click)="register()">Register</button>
+                </form>
+            </div>
+            <div *ngIf="IsAuthenticate">
+                <form id="signin" class="navbar-form navbar-right" role="form">
+                    <div class="input-group">
+                        <!-- <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span> -->
+                        <div class="titleBox">
+                            <label> {{LoggedInUser.name}} </label>
+                        </div>
+                    </div>
+                    <a target="_blank" (click)="logout()">Log out</a>
+                    <!-- <button type="button" class="btn btn-link" (click)="logout()">Log out</button> -->
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- interest section -->
+<div class="detailBox">
+    <div class="titleBox">
+        <label>IOT Interest</label>
+       
+    </div>
+    <!-- <div class="commentBox">
+        
+        <p class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+    </div> -->
+
+
+    <div class="actionBox">
+
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <input class="form-control" type="text" [(ngModel)]='model.expression' placeholder="Your interest" name="expression" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" (click)='write_expression()'>Add</button>
+            </div>
+
+        </form>
+
+        <ul class="commentList">
+            <li *ngFor='let interest of InterestList; let ind = index'>
+                <div class="commenterImage">
+                    <img src="https://image.ibb.co/bM91io/download.png" />
+                </div>
+                <div class="commentText">
+                    <p *ngIf='editInterest.id != ind' class="">{{interest.Expression}}</p>
+                    <input *ngIf='editInterest.id == ind' autofocus [(ngModel)]='interest.Expression' (keyup.enter)="edit_expression(interest); IsEdit=false" type="text" name="FirstName" value="Mickey">
+                    <span class="date sub-text">on {{interest.date}}</span>
+                    <div *ngIf='interest.IsLoggedInUser'>
+                        <button type="button" class="btn btn-link" (click)="delete_expression(interest.id)">delete</button>
+                        <button type="button" class="btn btn-link" (click)="editInterest.id = ind;" >edit</button>
+                        <!-- <a target="_blank" (click)="deleteInterest()">delete</a>
+                        <a target="_blank" (click)="editinterest()">edit</a> -->
+                    </div>
+                    <!-- <span class="date sub-text">on March 5th, 2014</span> -->
+                   
+
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+</div>
+
+
+
+<aot-register-modal (onRegistration)='childEvent($event)'></aot-register-modal>
