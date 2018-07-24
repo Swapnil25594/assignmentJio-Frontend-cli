@@ -31,18 +31,7 @@ export class IOTInterestComponent implements OnInit {
     constructor(private router: Router, private toasterService: ToasterService, private iotservice: IOTservice) {
 
         if (localStorage.getItem("access_Token") && localStorage.getItem("access_Token") != 'undefined') {
-            this.iotservice.getUserDetailsById()
-                .subscribe(
-                (response) => {
-                    this.IsAuthenticate = true;
-                    this.LoggedInUser = JSON.parse(response._body);
-                },
-                (err) => {
-                    console.error(err);
-                },
-                () => {
-                }
-                );
+            this.get_expression();
         }
     }
 
