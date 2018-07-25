@@ -1,6 +1,7 @@
 
 export class Constant {
-    public static apiEndpoint = 'https://glacial-sands-63718.herokuapp.com/api';
+     public static apiEndpoint = 'https://glacial-sands-63718.herokuapp.com/api';
+    // public static apiEndpoint = 'http://localhost:3000/api';
 
     public static register = Constant.apiEndpoint + '/UserModels';
     public static login = Constant.apiEndpoint + '/UserModels/login';

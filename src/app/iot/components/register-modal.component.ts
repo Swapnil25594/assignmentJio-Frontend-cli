@@ -29,6 +29,22 @@ export class RegisterModal {
     }
 
     user_register() {
+        this.toaster.clear();
+        if (!this.model.name) {
+            this.toaster.pop('error', 'Name  can not be empty');
+            return;
+        }
+        if (!this.model.mobile ) {
+            this.toaster.pop('error', 'Mobile  can not be empty');
+            return;
+        }
+        if (!this.model.password ) {
+            this.toaster.pop('error', 'Mobile  can not be empty');
+            return;
+        }
+
+
+
         let config: any = {};
         config.mobile = this.model.mobile;
         config.address = this.model.address;
