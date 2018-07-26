@@ -32,6 +32,20 @@ export class IOTInterestComponent implements OnInit {
 
         if (localStorage.getItem("access_Token") && localStorage.getItem("access_Token") != 'undefined') {
             this.get_expression();
+            this.IsAuthenticate = true;
+            this.iotservice.getUserDetailsById()
+                .subscribe(
+                (response) => {
+                    this.IsAuthenticate = true;
+                    this.LoggedInUser = JSON.parse(response._body);
+                    this.ngOnInit();
+                },
+                (err) => {
+                    console.error(err);
+                },
+                () => {
+                }
+                );
         }
     }
 
@@ -54,12 +68,12 @@ export class IOTInterestComponent implements OnInit {
     }
 
     login() {
-        if(!this.model.mobile){
+        if (!this.model.mobile) {
             this.toasterService.pop('error', 'Mobile  can not be empty');
             return;
         }
 
-        if(!this.model.password){
+        if (!this.model.password) {
             this.toasterService.pop('error', 'Password  can not be empty');
             return;
         }
@@ -137,6 +151,7 @@ export class IOTInterestComponent implements OnInit {
         }
         let conf: any = {};
         conf.expression = this.model.expression;
+        conf.name = this.LoggedInUser.name;
         this.iotservice.write_expression(conf)
             .subscribe(
             (response) => {
@@ -205,6 +220,7 @@ export class IOTInterestComponent implements OnInit {
         conf.id = interest.id;
         conf.expression = interest.Expression;
         conf.userModelId = interest.userModelId;
+        conf.name = this.LoggedInUser.name;
         this.iotservice.edit_expression(conf)
             .subscribe(
             (response) => {

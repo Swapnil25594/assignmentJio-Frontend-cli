@@ -64,7 +64,8 @@ export class IOTservice {
 
         let _body = JSON.stringify({
             "Expression": _config.expression,
-            "date" : new Date()
+            "date" : new Date(),
+            "name" : _config.name
         });
 
         const _response$ = this.http.post(Constant.register + '/' + UserModelid + '/AOTExpression' + 
@@ -103,6 +104,7 @@ export class IOTservice {
         let _body = JSON.stringify({
             "Expression": _config.expression,
             "date" : new Date(),
+            "name" : _config.name,
             "userModelId" : _config.userModelId
         });
 

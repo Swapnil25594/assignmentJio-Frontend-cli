@@ -67,7 +67,7 @@
                 <div class="commentText">
                     <p *ngIf='editInterest.id != ind' class="">{{interest.Expression}}</p>
                     <input *ngIf='editInterest.id == ind' autofocus [(ngModel)]='interest.Expression' (keyup.enter)="edit_expression(interest); IsEdit=false" type="text" name="FirstName" value="Mickey">
-                    <span class="date sub-text">on {{interest.date}}</span>
+                    <span class="date sub-text">by {{interest.name}} on {{interest.date}}</span>
                     <div *ngIf='interest.IsLoggedInUser'>
                         <button type="button" class="btn btn-link" (click)="delete_expression(interest.id)">delete</button>
                         <button type="button" class="btn btn-link" (click)="editInterest.id = ind;" >edit</button>
